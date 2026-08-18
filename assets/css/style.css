@@ -1331,3 +1331,290 @@ body::after,
     color: var(--primary-color);
     transform: translate(0, -0.25rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
 }
+
+
+/* ==========================================================
+   HERO RESPONSIVE
+   ========================================================== */
+
+/* ------------------------------
+   TABLETTE
+   ------------------------------ */
+
+@media (max-width: 991px) {
+
+    #hero {
+        padding: 100px 0 40px;
+    }
+
+    #hero .about-content {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    /* Contenu à gauche */
+    #hero .hero-content {
+        width: 58.333333%;
+        order: 1;
+        text-align: left;
+    }
+
+    /* Photo à droite */
+    #hero .about-content > .col-lg-5 {
+        width: 41.666667%;
+        order: 2;
+    }
+
+    #hero .hero-portrait {
+        width: 100%;
+        min-height: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #hero .hero-portrait .pic {
+        width: min(300px, 100%);
+        height: 390px;
+    }
+
+    #hero .tagline {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+
+/* ------------------------------
+   MOBILE
+   ------------------------------ */
+
+@media (max-width: 767px) {
+
+    #hero {
+        padding: 90px 0 35px;
+    }
+
+    #hero .container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    /*
+       IMPORTANT :
+       On garde les deux colonnes sur mobile
+       pour conserver le design desktop.
+    */
+
+    #hero .about-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    /* ------------------------------
+       CONTENU GAUCHE
+       ------------------------------ */
+
+    #hero .hero-content {
+        width: 60%;
+        flex: 0 0 60%;
+        order: 1 !important;
+        text-align: left;
+        margin-top: 0;
+        padding-right: 8px;
+    }
+
+    /* ------------------------------
+       PHOTO DROITE
+       ------------------------------ */
+
+    #hero .about-content > .col-lg-5 {
+        width: 40%;
+        flex: 0 0 40%;
+        order: 2 !important;
+        padding-left: 5px;
+        padding-right: 0;
+    }
+
+    #hero .hero-portrait {
+        width: 100%;
+        min-height: 0;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+        background: none;
+        border-radius: 0;
+    }
+
+    #hero .hero-portrait .pic {
+        width: 100%;
+        max-width: 150px;
+        height: 230px;
+        min-height: 0;
+        max-height: none;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        border-radius: 20px 20px 70px 70px;
+        border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    /* ------------------------------
+       TITRES
+       ------------------------------ */
+
+    #hero .h3 {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    #hero .name {
+        font-size: 27px;
+        line-height: 1.15;
+        margin-bottom: 8px;
+    }
+
+    /* ------------------------------
+       BADGE
+       ------------------------------ */
+
+    #hero .btn-showcase {
+        font-size: 10px;
+        padding: 6px 9px;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+        white-space: nowrap;
+    }
+
+    #hero .btn-showcase i {
+        font-size: 10px;
+    }
+
+    /* ------------------------------
+       DESCRIPTION
+       ------------------------------ */
+
+    #hero .tagline {
+        font-size: 11px;
+        line-height: 1.55;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px !important;
+    }
+
+    /* ------------------------------
+       RESEAUX SOCIAUX
+       ------------------------------ */
+
+    #hero .social-icons {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+        margin-bottom: 5px !important;
+    }
+
+    #hero .social-icons a {
+        font-size: 14px;
+        padding: 0;
+        margin-right: 10px;
+    }
+
+    /* ------------------------------
+       BOUTONS
+       ------------------------------ */
+
+    #hero .call-to-action {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+        margin-top: 8px;
+    }
+
+    #hero .call-to-action a {
+        margin: 0 !important;
+    }
+
+    #hero .call-to-action .btn {
+        font-size: 9px;
+        padding: 7px 9px;
+        white-space: nowrap;
+    }
+
+    #hero .call-to-action .me-3 {
+        margin-right: 0 !important;
+    }
+}
+
+
+/* ------------------------------
+   PETITS TELEPHONES
+   ------------------------------ */
+
+@media (max-width: 400px) {
+
+    #hero {
+        padding-top: 82px;
+    }
+
+    #hero .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    #hero .hero-content {
+        width: 61%;
+        flex: 0 0 61%;
+    }
+
+    #hero .about-content > .col-lg-5 {
+        width: 39%;
+        flex: 0 0 39%;
+    }
+
+    #hero .hero-portrait .pic {
+        max-width: 125px;
+        height: 205px;
+        border-radius: 18px 18px 60px 60px;
+    }
+
+    #hero .h3 {
+        font-size: 16px;
+    }
+
+    #hero .name {
+        font-size: 23px;
+    }
+
+    #hero .btn-showcase {
+        font-size: 9px;
+        padding: 5px 7px;
+    }
+
+    #hero .tagline {
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    #hero .social-icons a {
+        font-size: 13px;
+        margin-right: 7px;
+    }
+
+    #hero .call-to-action .btn {
+        font-size: 8px;
+        padding: 6px 7px;
+    }
+}
