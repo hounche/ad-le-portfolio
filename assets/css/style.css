@@ -194,6 +194,24 @@ body::after,
     -webkit-transition: var(--transition-default);
 }
 
+.contact-form-status {
+    min-height: 1.4em;
+    margin: 8px 0 0;
+    font-size: 0.78rem;
+}
+
+.contact-form-status.is-sending {
+    color: var(--muted-text);
+}
+
+.contact-form-status.is-success {
+    color: #55d6a5;
+}
+
+.contact-form-status.is-error {
+    color: #ff8d9b;
+}
+
 .primary-bg-btn:hover{
     color: var(--text-color);
     background-color: none;
@@ -1618,3 +1636,861 @@ body::after,
         padding: 6px 7px;
     }
 }
+
+
+/* Style de la section du projet de vente*/
+/* =========================================================
+   SALES / BI DASHBOARD
+   ========================================================= */
+
+.sales-dashboard-modal {
+    background: #0d1117;
+    color: #f5f7fa;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 28px 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.04),
+            rgba(255,255,255,0.01)
+        );
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.dashboard-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.65;
+
+    margin-bottom: 8px;
+}
+
+.dashboard-header h2 {
+    margin: 0;
+
+    font-size: 1.65rem;
+    font-weight: 700;
+}
+
+.dashboard-header p {
+    margin-top: 6px;
+    margin-bottom: 0;
+
+    opacity: 0.65;
+}
+
+
+.dashboard-close {
+    width: 42px;
+    height: 42px;
+
+    border: 0;
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.06);
+
+    color: inherit;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s ease;
+}
+
+.dashboard-close:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.dashboard-navigation {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 14px 24px;
+
+    overflow-x: auto;
+
+    background: rgba(0,0,0,0.18);
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+
+    scrollbar-width: thin;
+}
+
+.dashboard-nav-btn {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.025);
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.dashboard-nav-btn span {
+    font-size: 0.65rem;
+    opacity: 0.5;
+}
+
+.dashboard-nav-btn:hover {
+    background: rgba(255,255,255,0.07);
+    color: white;
+}
+
+.dashboard-nav-btn.active {
+    background: rgba(255,255,255,0.11);
+    border-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.dashboard-body {
+    padding: 30px;
+    max-height: calc(100vh - 220px);
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   ANALYSIS HEADING
+   ========================================================= */
+
+.analysis-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.analysis-number {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.45;
+}
+
+.analysis-heading h3 {
+    margin: 0;
+
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.analysis-heading p {
+    margin: 6px 0 0;
+
+    font-size: 0.88rem;
+
+    opacity: 0.55;
+}
+
+.analysis-navigation {
+    display: flex;
+    gap: 8px;
+}
+
+.analysis-arrow {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 11px;
+
+    background: rgba(255,255,255,0.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.analysis-arrow:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+
+/* =========================================================
+   KPI
+   ========================================================= */
+
+.dashboard-kpi-card {
+    height: 100%;
+
+    padding: 20px;
+
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.018)
+        );
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.12);
+}
+
+.kpi-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+    font-size: 0.78rem;
+
+    opacity: 0.65;
+}
+
+.kpi-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.07);
+
+    font-size: 0.95rem;
+}
+
+.dashboard-kpi-card strong {
+    display: block;
+
+    font-size: 1.65rem;
+    font-weight: 750;
+
+    letter-spacing: -0.5px;
+}
+
+.dashboard-kpi-card small {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 0.72rem;
+
+    opacity: 0.42;
+}
+
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.dashboard-panel {
+    padding: 22px;
+
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.025);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.10);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+}
+
+.panel-header h4 {
+    margin: 4px 0 0;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.panel-header > i {
+    font-size: 1.15rem;
+    opacity: 0.45;
+}
+
+.panel-label {
+    font-size: 0.63rem;
+
+    letter-spacing: 1.4px;
+
+    font-weight: 700;
+
+    opacity: 0.4;
+}
+
+
+/* =========================================================
+   CHART
+   ========================================================= */
+
+.chart-wrapper {
+    position: relative;
+
+    height: 300px;
+}
+
+.chart-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.chart-wrapper-line {
+    height: 270px;
+}
+
+.business-analysis-panel {
+    height: 100%;
+}
+
+.business-analysis-panel h4 {
+    margin: 6px 0 12px;
+    font-size: 1rem;
+}
+
+.business-analysis-panel p,
+.business-analysis-panel li {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    opacity: 0.62;
+}
+
+.business-analysis-panel p:last-child {
+    margin-bottom: 0;
+}
+
+.recommendation-panel ol {
+    margin: 10px 0 0;
+    padding-left: 18px;
+}
+
+.recommendation-panel li + li {
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   MARGIN
+   ========================================================= */
+
+.margin-display {
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+}
+
+.margin-circle {
+    width: 175px;
+    height: 175px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle,
+            #0d1117 58%,
+            transparent 59%
+        ),
+        conic-gradient(
+            rgba(255,255,255,0.9) 0deg,
+            rgba(255,255,255,0.9) 52deg,
+            rgba(255,255,255,0.08) 52deg,
+            rgba(255,255,255,0.08) 360deg
+        );
+}
+
+.margin-circle span {
+    font-size: 1.6rem;
+    font-weight: 750;
+}
+
+.margin-description {
+    text-align: center;
+    max-width: 300px;
+}
+
+.margin-description strong {
+    font-size: 0.95rem;
+}
+
+.margin-description p {
+    margin: 7px 0 0;
+
+    font-size: 0.78rem;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.dashboard-table {
+    margin-bottom: 0;
+
+    color: rgba(255,255,255,0.78);
+
+    --bs-table-bg: transparent;
+    --bs-table-color: rgba(255,255,255,0.78);
+    --bs-table-border-color: rgba(255,255,255,0.07);
+}
+
+.dashboard-table thead th {
+    padding: 12px 10px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+    font-size: 0.67rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.8px;
+
+    opacity: 0.45;
+
+    white-space: nowrap;
+}
+
+.dashboard-table tbody td {
+    padding: 13px 10px;
+
+    font-size: 0.77rem;
+
+    vertical-align: middle;
+}
+
+.dashboard-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.dashboard-table tbody tr:hover {
+    background: rgba(255,255,255,0.035);
+}
+
+.dashboard-table .profit-positive {
+    font-weight: 650;
+}
+
+.dashboard-table .profit-negative {
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   INSIGHTS
+   ========================================================= */
+
+.insight-item {
+    display: flex;
+    gap: 14px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.insight-item:last-child {
+    border-bottom: 0;
+}
+
+.insight-number {
+    min-width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,0.06);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    opacity: 0.7;
+}
+
+.insight-item strong {
+    display: block;
+
+    font-size: 0.82rem;
+}
+
+.insight-item p {
+    margin: 5px 0 0;
+
+    font-size: 0.75rem;
+    line-height: 1.55;
+
+    opacity: 0.52;
+}
+
+
+/* =========================================================
+   HIGHLIGHTS
+   ========================================================= */
+
+.highlight-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.highlight-item {
+    padding: 13px 14px;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.highlight-item span {
+    display: block;
+
+    font-size: 0.65rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    opacity: 0.4;
+}
+
+.highlight-item strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+   ========================================================= */
+
+.dashboard-bottom-navigation {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 28px;
+}
+
+#analysisCounter {
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    opacity: 0.4;
+
+    letter-spacing: 1px;
+}
+
+.dashboard-primary-btn,
+.dashboard-secondary-btn {
+    border-radius: 10px;
+
+    padding: 10px 15px;
+
+    font-size: 0.75rem;
+
+    font-weight: 650;
+
+    transition: 0.2s ease;
+}
+
+.dashboard-primary-btn {
+    background: rgba(255,255,255,0.12);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dashboard-primary-btn:hover {
+    background: rgba(255,255,255,0.2);
+
+    color: white;
+}
+
+.dashboard-secondary-btn {
+    background: transparent;
+
+    color: rgba(255,255,255,0.65);
+
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dashboard-secondary-btn:hover {
+    background: rgba(255,255,255,0.06);
+
+    color: white;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.dashboard-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 30px;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+
+    background: rgba(0,0,0,0.15);
+}
+
+.dashboard-footer span {
+    display: block;
+
+    font-size: 0.65rem;
+
+    opacity: 0.4;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.dashboard-footer strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 0.72rem;
+
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
+
+.sales-project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-analysis-modal {
+    background: #0d1117;
+    color: #f5f7fa;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.analysis-dashboard-body {
+    padding: 30px;
+    max-height: calc(100vh - 220px);
+    overflow-y: auto;
+}
+
+.pipeline-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pipeline-flow span {
+    flex: 1 1 150px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.035);
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 650;
+}
+
+.pipeline-flow i {
+    opacity: 0.45;
+}
+
+.analysis-insight-list .insight-item:last-child {
+    border-bottom: 0;
+}
+
+.project-icon {
+    width: 45px;
+    height: 45px;
+
+    margin-bottom: 15px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.07);
+
+    font-size: 1.1rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .dashboard-header {
+        padding: 22px 20px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .dashboard-navigation {
+        padding: 12px 15px;
+    }
+
+    .dashboard-body {
+        padding: 20px 15px;
+    }
+
+    .analysis-dashboard-body {
+        padding: 20px 15px;
+    }
+
+    .analysis-heading {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .analysis-heading h3 {
+        font-size: 1.2rem;
+    }
+
+    .dashboard-panel {
+        padding: 17px;
+    }
+
+    .chart-wrapper {
+        height: 250px;
+    }
+
+    .chart-wrapper-line {
+        height: 230px;
+    }
+
+    .margin-circle {
+        width: 145px;
+        height: 145px;
+    }
+
+    .dashboard-bottom-navigation {
+        gap: 10px;
+    }
+
+    .dashboard-bottom-navigation button {
+        font-size: 0.68rem;
+        padding: 8px 10px;
+    }
+
+    .dashboard-footer {
+        padding: 16px 20px;
+    }
+
+    .pipeline-flow {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .pipeline-flow i {
+        transform: rotate(90deg);
+        align-self: center;
+    }
+
+}
+/*fin du style du projet de vente*/
