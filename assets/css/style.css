@@ -299,6 +299,7 @@ body::after,
 
 .theme-text{
     background: var(--secondary-gradient-color);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -948,6 +949,10 @@ body::after,
 }
 
 .project-card{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: transparent;
     padding: 10px;
     border-radius: 24px;
@@ -963,6 +968,13 @@ body::after,
     position: relative;
     font-size: 18px;
     text-decoration: none;
+}
+
+#projects .project-context {
+    margin: 4px 0 8px;
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: var(--muted-text);
 }
 
 .project-card .title::after {
@@ -998,7 +1010,37 @@ body::after,
 }
 
 .project-card .description-container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     padding-left: inherit;
+}
+
+#projects .row > [class*="col-"] {
+    display: flex;
+}
+
+#projects .project-card {
+    min-height: 344px;
+}
+
+#projects .description-container .btn {
+    align-self: flex-start;
+    margin-top: auto !important;
+}
+
+#projects .description-container {
+    align-items: flex-start;
+    margin-top: -10px;
+    text-align: left;
+}
+
+#projects .description-container .description {
+    max-width: 330px;
+}
+
+#projects .description-container .btn {
+    align-self: flex-start;
 }
 
 .project-card .description{
@@ -1328,7 +1370,6 @@ body::after,
     background: var(--primary-gradient-color);
     background-clip: text;
     -webkit-background-clip: text;
-    text-fill-color: transparent;
     -webkit-text-fill-color: transparent;
 }
 
@@ -2395,6 +2436,31 @@ body::after,
     opacity: 0.45;
 }
 
+.technical-schema,
+.uml-grid {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.technical-schema span,
+.uml-grid span {
+    padding: 7px 9px;
+    border: 1px solid rgba(18,194,233,0.25);
+    border-radius: 7px;
+    color: rgba(255,255,255,0.72);
+    font-size: 0.68rem;
+}
+
+.technical-schema i,
+.uml-grid i {
+    opacity: 0.45;
+}
+
 .analysis-insight-list .insight-item:last-child {
     border-bottom: 0;
 }
@@ -2416,12 +2482,145 @@ body::after,
     font-size: 1.1rem;
 }
 
+.opportunity-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.035);
+}
+
+.opportunity-panel h3 {
+    margin: 7px 0;
+    font-size: 1.2rem;
+}
+
+.opportunity-panel p {
+    margin: 0;
+    color: var(--muted-text);
+}
+
+.opportunity-details {
+    display: grid;
+    gap: 10px;
+    min-width: 260px;
+    font-size: 0.78rem;
+    color: var(--muted-text);
+}
+
+.opportunity-details i {
+    margin-right: 7px;
+    color: var(--tertiary-color);
+}
+
+.methodology-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.methodology-flow span {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.035);
+    font-size: 0.78rem;
+}
+
+.methodology-flow b {
+    color: var(--tertiary-color);
+    font-size: 0.68rem;
+}
+
+.project-brief-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.project-brief-grid > div {
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.025);
+}
+
+.project-brief-grid p {
+    margin: 7px 0 0;
+    font-size: 0.74rem;
+    line-height: 1.5;
+    opacity: 0.65;
+}
+
+.data-disclaimer {
+    margin: 0 0 16px;
+    font-size: 0.72rem;
+    color: #ffca78;
+}
+
+.sales-filters-panel {
+    margin-bottom: 0;
+}
+
+.dashboard-icon-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9px;
+    background: rgba(255,255,255,0.05);
+    color: inherit;
+}
+
+.sales-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.sales-filters-grid label {
+    display: grid;
+    gap: 6px;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.55;
+}
+
+.sales-filters-grid select {
+    min-height: 38px;
+    padding: 7px 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    background: #111820;
+    color: #fff;
+    font-size: 0.75rem;
+}
+
+.filter-count {
+    margin: 12px 0 0;
+    font-size: 0.72rem;
+    opacity: 0.5;
+}
+
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
 @media (max-width: 768px) {
+
+    #projects .project-card {
+        min-height: 344px;
+    }
 
     .dashboard-header {
         padding: 22px 20px;
@@ -2482,12 +2681,38 @@ body::after,
         padding: 16px 20px;
     }
 
+    .opportunity-panel {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .opportunity-details {
+        min-width: 0;
+    }
+
+    .project-brief-grid,
+    .sales-filters-grid {
+        grid-template-columns: 1fr;
+    }
+
     .pipeline-flow {
         align-items: stretch;
         flex-direction: column;
     }
 
     .pipeline-flow i {
+        transform: rotate(90deg);
+        align-self: center;
+    }
+
+    .technical-schema,
+    .uml-grid {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .technical-schema i,
+    .uml-grid i {
         transform: rotate(90deg);
         align-self: center;
     }

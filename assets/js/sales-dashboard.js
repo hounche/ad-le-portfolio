@@ -1267,6 +1267,7 @@ let currentAnalysis = 0;
 
 let countryChart = null;
 let monthlySalesChart = null;
+let productComparisonChart = null;
 
 const monthlyPatterns = [
     [6.4, 7.1, 7.6, 7.8, 8.1, 8.4, 8.8, 8.6, 9.1, 12.7, 9.0, 9.8],
@@ -1324,6 +1325,11 @@ const analysisHighlights =
 
 const analysisCounter =
     document.getElementById("analysisCounter");
+
+const countryFilter = document.getElementById("countryFilter");
+const segmentFilter = document.getElementById("segmentFilter");
+const discountFilter = document.getElementById("discountFilter");
+const salesFilterCount = document.getElementById("salesFilterCount");
 
 
 /* =========================================================
@@ -1493,11 +1499,55 @@ function updateNavigation() {
    UPDATE TABLE
    ========================================================= */
 
+function getFilterValue(element) {
+    return element ? element.value : "";
+}
+
+function getFilteredRows(data) {
+    const country = getFilterValue(countryFilter);
+    const segment = getFilterValue(segmentFilter);
+    const discount = getFilterValue(discountFilter);
+
+    return data.rows.filter(row =>
+        (!country || row.country === country) &&
+        (!segment || row.segment === segment) &&
+        (!discount || row.discount === discount)
+    );
+}
+
+function populateFilter(element, values, emptyLabel) {
+    if (!element) {
+        return;
+    }
+
+    const selectedValue = element.value;
+    element.innerHTML = `<option value="">${emptyLabel}</option>`;
+
+    [...new Set(values)].sort((a, b) => a.localeCompare(b, "fr")).forEach(value => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        element.appendChild(option);
+    });
+
+    if ([...element.options].some(option => option.value === selectedValue)) {
+        element.value = selectedValue;
+    }
+}
+
+function updateFilters(data) {
+    populateFilter(countryFilter, data.rows.map(row => row.country), "Tous les pays");
+    populateFilter(segmentFilter, data.rows.map(row => row.segment), "Tous les segments");
+    populateFilter(discountFilter, data.rows.map(row => row.discount), "Toutes les remises");
+}
+
 function updateTable(data) {
 
     analysisTableBody.innerHTML = "";
 
-    data.rows.forEach(row => {
+    const rows = getFilteredRows(data);
+
+    rows.forEach(row => {
 
         const tr =
             document.createElement("tr");
@@ -1552,6 +1602,42 @@ function updateTable(data) {
 
     });
 
+    if (salesFilterCount) {
+        salesFilterCount.textContent = `${rows.length} ligne${rows.length > 1 ? "s" : ""} affichée${rows.length > 1 ? "s" : ""} sur ${data.rows.length}`;
+    }
+
+}
+
+function updateProductComparisonChart() {
+    const canvas = document.getElementById("productComparisonChart");
+
+    if (!canvas || typeof Chart === "undefined") {
+        return;
+    }
+
+    if (productComparisonChart) {
+        productComparisonChart.destroy();
+    }
+
+    productComparisonChart = new Chart(canvas, {
+        type: "bar",
+        data: {
+            labels: ["Paseo", "VTT", "Velo", "Amarilla"],
+            datasets: [
+                { label: "CA (M€)", data: [33.01, 20.51, 18.25, 17.75], backgroundColor: "rgba(18,194,233,.78)", borderRadius: 5 },
+                { label: "Marge (%)", data: [14.53, 14.79, 12.64, 15.86], backgroundColor: "rgba(230,65,87,.72)", borderRadius: 5 }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { ticks: { color: "rgba(255,255,255,.55)", font: { size: 10 } }, grid: { display: false } },
+                y: { ticks: { color: "rgba(255,255,255,.45)", font: { size: 10 } }, grid: { color: "rgba(255,255,255,.06)" } }
+            },
+            plugins: { legend: { labels: { color: "rgba(255,255,255,.65)", font: { size: 11 } } } }
+        }
+    });
 }
 
 
@@ -1911,6 +1997,7 @@ function renderAnalysis(index) {
 
     updateNavigation();
 
+    updateFilters(data);
     updateTable(data);
 
     updateInsights(data);
@@ -1920,6 +2007,7 @@ function renderAnalysis(index) {
     updateCountryChart(data);
 
     updateMonthlySalesChart(data);
+    updateProductComparisonChart();
 
 }
 
@@ -1998,6 +2086,22 @@ function bindDashboardControls() {
             button.addEventListener("click", handler);
         }
     });
+
+    [countryFilter, segmentFilter, discountFilter].forEach(filter => {
+        if (filter) {
+            filter.addEventListener("change", () => updateTable(salesAnalyses[currentAnalysis]));
+        }
+    });
+
+    const resetFilters = document.getElementById("resetSalesFilters");
+    if (resetFilters) {
+        resetFilters.addEventListener("click", () => {
+            [countryFilter, segmentFilter, discountFilter].forEach(filter => {
+                if (filter) filter.value = "";
+            });
+            updateTable(salesAnalyses[currentAnalysis]);
+        });
+    }
 }
 
 
